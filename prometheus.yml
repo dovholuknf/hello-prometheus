@@ -1,6 +1,12 @@
 global:
   scrape_interval: 5s
 scrape_configs:
-  - job_name: 'apache'
+  - job_name: 'apache-site-1'
     static_configs:
-      - targets: ['apache-exporter:9117']
+      - targets: ['apache-exporter-site-1:9117']
+  - job_name: 'apache-site-2'
+    static_configs:
+      - targets: ['apache-exporter-site-2:9117']
+  - job_name: 'apache-site-3'
+    static_configs:
+      - targets: ['apache-exporter-site-3:9117']
