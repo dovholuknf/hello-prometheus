@@ -1,10 +1,17 @@
-This repo is a small repo that starts up three docker networks, each with an apache server running and a Prometheus
+# Prometheus and OpenZiti
+
+This repo was inspired by the blog post: https://codeburst.io/prometheus-by-example-4804ab86e741 which links to the
+source repo this one was forked from: https://github.com/larkintuckerllc/hello-prometheus. It is a small repo that
+starts up three docker networks, each with an apache server running and a Prometheus
 apache exporter. It then uses an OpenZiti Network to provide reach into each of the docker networks in order to
 scrape the exporters in each network. This will emulate a centralized Prometheus server scraping three remote sites.
 This is particularly useful as the exporters will not need to be exposed to the open internet. No inbound firewall
 rules needed which is generally necessary to enable Prometheus to scrape the exporters.
 
 Here's the list of things that need to be accomplished. Start by cloning this repo and cd'ing to the checkout:
+1. Install a OpenZiti Network which will be addressable from within Docker and from wherever you want/need. It'll be
+   easiest to deploy this on the open internet if possible just to make sure this isn't an issue.
+
 1. set four shell variables:
    * set `ZITI_CTRL_EDGE_ADVERTISED_ADDRESS`
    * set `ZITI_CTRL_EDGE_ADVERTISED_PORT`
@@ -59,7 +66,6 @@ Here's the list of things that need to be accomplished. Start by cloning this re
 1. Clean and then launch the docker compose test environment
 
        docker compose down -v; docker compose up
-
 
 1. Let the docker compose environment run for a while then access the results at 
 
